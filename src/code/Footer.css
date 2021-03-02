@@ -1,0 +1,15 @@
+.Footer footer {
+  color: #828794;
+  font-size: 12px;
+  margin: 16px 0;
+  padding: 8px;
+  text-align: left;
+}
+
+.Footer a {
+  color: #3858a8;
+  text-decoration: none;
+}
+.Footer a:hover {
+  text-decoration: underline;
+}
