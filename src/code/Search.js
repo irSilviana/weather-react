@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Weather from "./Weather";
+import "./Search.css";
 
 export default function Search() {
   let [city, setCity] = useState(null);
@@ -31,20 +32,51 @@ export default function Search() {
   }
 
   let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" onChange={changeCity} />
-      <button type="submit">Search</button>
+    <form id="search-form" onSubmit={handleSubmit}>
+      <input
+        type="search"
+        id="input-city"
+        className="form-control shadow-sm"
+        placeholder="Enter a city"
+        autoFocus="on"
+        autoComplete="off"
+        onChange={changeCity}
+      />
+      <input
+        type="submit"
+        className="btn btn-secondary shadow"
+        value="Search"
+      />
+      <i className="fas fa-map-marker-alt" id="currentLocation"></i>
     </form>
   );
 
-  if (weatherData) {
-    return (
-      <div className="Search">
-        {form}
-        <Weather details={weatherData} />
+  return (
+    <div className="Search">
+      <div className="row">
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <form id="search-form">
+                <input
+                  type="search"
+                  id="input-city"
+                  className="form-control shadow-sm"
+                  placeholder="Enter a city"
+                  autoFocus="on"
+                  autoComplete="off"
+                />
+                <input
+                  type="submit"
+                  className="btn btn-secondary shadow"
+                  value="Search"
+                />
+                <i className="fas fa-map-marker-alt" id="currentLocation"></i>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    );
-  } else {
-    return <div className="Search">{form}</div>;
-  }
+    </div>
+  );
 }

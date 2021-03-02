@@ -1,0 +1,24 @@
+.Search .card {
+  border: 0;
+  background: transparent;
+}
+.Search .form-control {
+  display: inline;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  width: 150px;
+}
+
+.Search .fa-map-marker-alt {
+  color: #1476a5;
+  cursor: pointer;
+  font-size: 1.9rem;
+  margin-left: 5px;
+  position: relative;
+  top: 3px;
+}
+
+.Search .btn-secondary {
+  margin-top: -3px;
+  padding: 5px 10px;
+}
