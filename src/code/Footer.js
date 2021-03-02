@@ -8,7 +8,7 @@ export default function Footer() {
         <small>
           <i className="fas fa-mobile-alt"></i> Responsive Design&nbsp;
           <a
-            href="https://github.com/irSilviana/Vanilla-Weather-App"
+            href="https://github.com/irSilviana/weather-react"
             target="_blank"
             rel="noreferrer"
           >
