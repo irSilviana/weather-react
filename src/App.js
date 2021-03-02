@@ -1,6 +1,6 @@
 import "./App.css";
-import Search from "./Search";
-import Weather from "./Weather";
+import Search from "./js/Search";
+import Weather from "./js/Weather";
 
 function App() {
   return (
