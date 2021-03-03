@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import CityTime from "./CityTime";
 import "./Temperature.css";
 
 export default function Temperature(props) {
@@ -8,6 +9,8 @@ export default function Temperature(props) {
   function showTemperature(response) {
     setWeatherData({
       ready: true,
+      city: response.data.name,
+      date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
       description: response.data.weather[0].main,
       humidity: response.data.main.humidity,
@@ -21,50 +24,58 @@ export default function Temperature(props) {
   if (weatherData.ready) {
     return (
       <div className="Temperature">
-        <div className="col">
-          <div className="card">
-            <div className="card-body">
-              {/* upper part */}
-              <div className="row">
-                <div className="col temperature-section">
-                  <div className="clearfix">
-                    <img
-                      src={weatherData.icon}
-                      alt={weatherData.description}
-                      className="float-left"
-                    />
-                    <div className="temperature-part">
-                      <span>{Math.round(weatherData.temperature)}</span>
-                      <span className="units">
-                        <button href="#" className="active">
-                          °C
-                        </button>{" "}
-                        |<button href="#">°F</button>
-                      </span>
+        <div className="row">
+          {/* Left Side */}
+          <div className="col">
+            <CityTime city={weatherData.city} date={weatherData.date} />
+          </div>
+          {/* Right Side */}
+          <div className="col">
+            <div className="card">
+              <div className="card-body">
+                {/* upper part */}
+                <div className="row">
+                  <div className="col temperature-section">
+                    <div className="clearfix">
+                      <img
+                        src={weatherData.icon}
+                        alt={weatherData.description}
+                        className="float-left"
+                      />
+                      <div className="temperature-part">
+                        <span>{Math.round(weatherData.temperature)}</span>
+                        <span className="units">
+                          <button href="#" className="active">
+                            °C
+                          </button>{" "}
+                          |<button href="#">°F</button>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              {/* lower part */}
-              <div className="row">
-                <div className="col">
-                  <p>{weatherData.description}</p>
-                  <ul className="weather">
-                    <li>
-                      Cloudines:{" "}
-                      <span>{Math.round(weatherData.cloudiness)}</span>%
-                    </li>
-                    <li>
-                      Feels like:{" "}
-                      <span>{Math.round(weatherData.feelsLike)}</span>°
-                    </li>
-                    <li>
-                      Humidity: <span>{Math.round(weatherData.humidity)}</span>%
-                    </li>
-                    <li>
-                      Wind: <span>{Math.round(weatherData.wind)}</span>km/h
-                    </li>
-                  </ul>
+                {/* lower part */}
+                <div className="row">
+                  <div className="col">
+                    <p className="description">{weatherData.description}</p>
+                    <ul className="weather">
+                      <li>
+                        Cloudines:{" "}
+                        <span>{Math.round(weatherData.cloudiness)}</span>%
+                      </li>
+                      <li>
+                        Feels like:{" "}
+                        <span>{Math.round(weatherData.feelsLike)}</span>°
+                      </li>
+                      <li>
+                        Humidity:{" "}
+                        <span>{Math.round(weatherData.humidity)}</span>%
+                      </li>
+                      <li>
+                        Wind: <span>{Math.round(weatherData.wind)}</span>km/h
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

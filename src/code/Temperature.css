@@ -4,7 +4,7 @@
   width: 85px;
 }
 
-.Temperature p#description {
+.Temperature p.description {
   color: #434752;
   font-size: 13px;
   font-weight: bold;

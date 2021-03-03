@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import Cities from "./Cities";
 import Search from "./Search";
-import CityTime from "./CityTime";
 import Temperature from "./Temperature";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
@@ -24,16 +23,7 @@ export default function App() {
             {/* Search Form */}
             <Search />
             {/* Main Body */}
-            <div className="row">
-              {/* Left Side */}
-              <div className="col">
-                <CityTime />
-              </div>
-              {/* Right Side */}
-              <div className="col">
-                <Temperature city="New York" />
-              </div>
-            </div>
+            <Temperature city="New York" />
             {/* Forecast */}
             <Forecast />
           </div>
