@@ -11,3 +11,13 @@
   line-height: 1;
   margin-top: 5px;
 }
+
+.CityTime #clock {
+  margin: 0;
+  font-size: 32px;
+}
+
+.CityTime #amPm {
+  position: relative;
+  top: -10px;
+}
