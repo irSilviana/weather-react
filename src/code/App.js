@@ -21,9 +21,9 @@ export default function App() {
             {/* List of Cities */}
             <Cities />
             {/* Search Form */}
-            <Search />
+            <Search city="New York" />
             {/* Main Body */}
-            <Temperature city="New York" />
+            <Temperature />
             {/* Forecast */}
             <Forecast />
           </div>
