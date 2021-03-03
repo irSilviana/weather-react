@@ -6,13 +6,13 @@ export default function Temperature(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function showTemperature(response) {
-    console.log(response.data);
-
     setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
       description: response.data.weather[0].main,
       humidity: response.data.main.humidity,
+      cloudiness: response.data.clouds.all,
+      feelsLike: response.data.main.feels_like,
       wind: response.data.wind.speed,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
@@ -31,21 +31,15 @@ export default function Temperature(props) {
                     <img
                       src={weatherData.icon}
                       alt={weatherData.description}
-                      id="icon"
                       className="float-left"
                     />
                     <div className="temperature-part">
-                      <span id="temperature">
-                        {Math.round(weatherData.temperature)}
-                      </span>
+                      <span>{Math.round(weatherData.temperature)}</span>
                       <span className="units">
-                        <button href="#" id="toCelcius" className="active">
+                        <button href="#" className="active">
                           °C
                         </button>{" "}
-                        |
-                        <button href="#" id="toFahrenheit">
-                          °F
-                        </button>
+                        |<button href="#">°F</button>
                       </span>
                     </div>
                   </div>
@@ -54,20 +48,21 @@ export default function Temperature(props) {
               {/* lower part */}
               <div className="row">
                 <div className="col">
-                  <p id="description">{weatherData.description}</p>
+                  <p>{weatherData.description}</p>
                   <ul className="weather">
                     <li>
-                      Cloudines: <span id="cloudines">40</span>%
+                      Cloudines:{" "}
+                      <span>{Math.round(weatherData.cloudiness)}</span>%
                     </li>
                     <li>
-                      Feels like: <span id="feels-like">35</span>°
+                      Feels like:{" "}
+                      <span>{Math.round(weatherData.feelsLike)}</span>°
                     </li>
                     <li>
-                      Humidity:{" "}
-                      <span id="humidity">{weatherData.humidity}</span>%
+                      Humidity: <span>{Math.round(weatherData.humidity)}</span>%
                     </li>
                     <li>
-                      Wind: <span id="wind">{weatherData.wind}</span>km/h
+                      Wind: <span>{Math.round(weatherData.wind)}</span>km/h
                     </li>
                   </ul>
                 </div>

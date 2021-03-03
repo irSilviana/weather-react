@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Cities from "./Cities";
 import Search from "./Search";
