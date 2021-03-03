@@ -12,6 +12,8 @@ import Footer from "./Footer";
 //   backgroundImage: `url(${require("/images/background/10n@2x.png")} )`,
 // };
 
+//console.log(process.env.REACT_APP_WEATHER_API_KEY);
+
 export default function App() {
   return (
     <div className="App" /* style={background} */>

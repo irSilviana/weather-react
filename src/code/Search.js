@@ -27,11 +27,20 @@ export default function Search(props) {
   }
 
   function searchByCity() {
-    let apiKey = `125089b53f00feddd6fbd602dc6cec7a`;
+    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
     let unit = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 
-    axios.get(apiUrl).then(showTemperature);
+    // axios.get(apiUrl).then(showTemperature).catch(console.clear);
+
+    axios
+      .get(apiUrl)
+      .then(showTemperature)
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          console.clear();
+        }
+      });
   }
 
   function handleSubmit(event) {
