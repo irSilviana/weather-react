@@ -30,7 +30,7 @@ export default function App() {
               </div>
               {/* Right Side */}
               <div className="col">
-                <Temperature />
+                <Temperature city="New York" />
               </div>
             </div>
             {/* Forecast */}
