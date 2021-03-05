@@ -42,7 +42,7 @@ export default function CityTime(props) {
   if (hour < 10) {
     hour = `0${hour}`;
   } else if (hour >= 10 && hour <= 12) {
-    return hour;
+    hour = `${hour}`;
   } else if (hour > 12 && hour < 22) {
     hour = hour - 12;
     hour = `0${hour}`;
