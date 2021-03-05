@@ -1,5 +1,6 @@
 import React from "react";
 import CityTime from "./CityTime";
+import WeatherIcon from "./WeatherIcon";
 import "./Temperature.css";
 
 export default function Temperature(props) {
@@ -19,11 +20,9 @@ export default function Temperature(props) {
                 <div className="row">
                   <div className="col temperature-section">
                     <div className="clearfix">
-                      <img
-                        src={props.details.icon}
-                        alt={props.details.description}
-                        className="float-left"
-                      />
+                      <div className="float-left">
+                        <WeatherIcon code={props.details.icon} />
+                      </div>
                       <div className="temperature-part">
                         <span>{Math.round(props.details.temperature)}</span>
                         <span className="units">

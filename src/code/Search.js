@@ -18,7 +18,7 @@ export default function Search(props) {
       cloudiness: response.data.clouds.all,
       feelsLike: response.data.main.feels_like,
       wind: response.data.wind.speed,
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
     });
   }
 
