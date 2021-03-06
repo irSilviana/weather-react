@@ -88,6 +88,17 @@ export default function Search(props) {
     );
   } else {
     searchByCity();
-    return "Loading....";
+    return (
+      <div className="Search">
+        <div className="row">
+          <div className="col">
+            <div className="card">
+              <div className="card-body">{form}</div>
+            </div>
+            Loading...
+          </div>
+        </div>
+      </div>
+    );
   }
 }

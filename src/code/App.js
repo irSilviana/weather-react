@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Cities from "./Cities";
-import Search from "./Search";
+
 import Temperature from "./Temperature";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
@@ -12,8 +12,6 @@ import Footer from "./Footer";
 //   backgroundImage: `url(${require("/images/background/10n@2x.png")} )`,
 // };
 
-//console.log(process.env.REACT_APP_WEATHER_API_KEY);
-
 export default function App() {
   return (
     <div className="App" /* style={background} */>
@@ -22,8 +20,7 @@ export default function App() {
           <div className="weather-app">
             {/* List of Cities */}
             <Cities />
-            {/* Search Form */}
-            <Search city="New York" />
+            {/* Search Form inside Cities */}
             {/* Main Body */}
             <Temperature />
             {/* Forecast */}

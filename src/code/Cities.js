@@ -1,24 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import Search from "./Search";
 import "./Cities.css";
 
 export default function Cities() {
-  return (
-    <div className="Cities">
-      <div className="row">
-        <div className="col">
-          <div className="card">
-            <div className="card-body">
-              <ul className="cities">
-                <li id="jakarta">Jakarta</li>&nbsp;|&nbsp;
-                <li id="london">London</li>&nbsp;|&nbsp;
-                <li id="paris">Paris</li>&nbsp;|&nbsp;
-                <li id="newyork">New York</li>&nbsp;|&nbsp;
-                <li id="sanfrancisco">San Francisco</li>
-              </ul>
-            </div>
+  let [searching, setSearching] = useState(<Search city="chicago" />);
+
+  function chooseCity(event) {
+    event.preventDefault();
+    let selectedCity = event.target.innerHTML;
+    console.log(selectedCity);
+    setSearching(<Search city={selectedCity} />);
+
+    console.log(searching);
+  }
+
+  let cities = (
+    <div className="row">
+      <div className="col">
+        <div className="card">
+          <div className="card-body">
+            <ul className="cities">
+              <li>
+                <a href="/" onClick={chooseCity}>
+                  Jakarta
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="/" onClick={chooseCity}>
+                  London
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="/" onClick={chooseCity}>
+                  Paris
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="/" onClick={chooseCity}>
+                  New York
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="/" onClick={chooseCity}>
+                  San francisco
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+    </div>
+  );
+
+  return (
+    <div className="Cities">
+      {cities}
+      {/* Search Form */}
+      {searching}
     </div>
   );
 }
