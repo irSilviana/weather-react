@@ -3,15 +3,14 @@ import Search from "./Search";
 import "./Cities.css";
 
 export default function Cities() {
-  let [searching, setSearching] = useState(<Search city="chicago" />);
+  let [begin, setBegin] = useState(true);
+  let [searching, setSearching] = useState(null);
 
   function chooseCity(event) {
     event.preventDefault();
     let selectedCity = event.target.innerHTML;
-    console.log(selectedCity);
-    setSearching(<Search city={selectedCity} />);
-
-    console.log(searching);
+    setSearching(selectedCity);
+    setBegin(false);
   }
 
   let cities = (
@@ -56,11 +55,21 @@ export default function Cities() {
     </div>
   );
 
-  return (
-    <div className="Cities">
-      {cities}
-      {/* Search Form */}
-      {searching}
-    </div>
-  );
+  if (begin) {
+    return (
+      <div className="Cities">
+        {cities}
+        {/* Search Form */}
+        <Search city="chicago" />
+      </div>
+    );
+  } else {
+    return (
+      <div className="Cities">
+        {cities}
+        {/* Search Form */}
+        <Search city={searching} />
+      </div>
+    );
+  }
 }
