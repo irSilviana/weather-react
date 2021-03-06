@@ -8,9 +8,9 @@ export default function Cities() {
 
   function chooseCity(event) {
     event.preventDefault();
+    setBegin(false);
     let selectedCity = event.target.innerHTML;
     setSearching(selectedCity);
-    setBegin(false);
   }
 
   let cities = (
