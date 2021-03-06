@@ -22,33 +22,3 @@
   background: transparent;
   border: 0px;
 }
-
-.Temperature .temperature-section .temperature-part {
-  float: left;
-}
-
-.Temperature .temperature-part span {
-  color: #333f6e;
-  float: left;
-  font-size: 40px;
-  font-weight: 400;
-  margin: 0;
-  line-height: 1;
-}
-
-.Temperature .temperature-part .units {
-  font-size: 16px;
-  left: 5px;
-  position: relative;
-  top: 15px;
-}
-
-.Temperature .units .active {
-  color: #000000;
-  cursor: default;
-  font-weight: bold;
-}
-
-.Temperature .units .active:hover {
-  text-decoration: none;
-}
