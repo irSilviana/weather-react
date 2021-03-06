@@ -53,11 +53,25 @@ export default function Search(props) {
     }
   }
 
+  function currentPosition(position) {
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+    let unit = "metric";
+    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}`;
+
+    axios.get(apiUrl).then(showTemperature);
+  }
+
+  function showCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(currentPosition);
+  }
+
   let form = (
-    <form id="search-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <input
         type="search"
-        id="input-city"
         className="form-control shadow-sm"
         placeholder="Enter a city"
         autoFocus="on"
@@ -69,7 +83,7 @@ export default function Search(props) {
         className="btn btn-secondary shadow"
         value="Search"
       />
-      <i className="fas fa-map-marker-alt" id="currentLocation"></i>
+      <i className="fas fa-map-marker-alt" onClick={showCurrentLocation}></i>
     </form>
   );
 
