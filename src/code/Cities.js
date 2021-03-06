@@ -46,7 +46,7 @@ export default function Cities() {
               &nbsp;|&nbsp;
               <li>
                 <a href="/" onClick={chooseCity}>
-                  San francisco
+                  San Francisco
                 </a>
               </li>
             </ul>
