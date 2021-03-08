@@ -70,7 +70,7 @@ export default function Search(props) {
 
   function chooseCity(event) {
     event.preventDefault();
-    setCity(event.target.innerHTML);
+    city = event.target.innerHTML;
     searchByCity();
   }
 
