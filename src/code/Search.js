@@ -68,33 +68,87 @@ export default function Search(props) {
     navigator.geolocation.getCurrentPosition(currentPosition);
   }
 
+  function chooseCity(event) {
+    event.preventDefault();
+    setCity(event.target.innerHTML);
+    searchByCity();
+  }
+
+  let cities = (
+    <div className="row">
+      <div className="col">
+        <div className="card">
+          <div className="card-body">
+            <ul className="cities">
+              <li>
+                <a href="#Jakarta" onClick={chooseCity}>
+                  Jakarta
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="#London" onClick={chooseCity}>
+                  London
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="#Paris" onClick={chooseCity}>
+                  Paris
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="#New York" onClick={chooseCity}>
+                  New York
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
+                <a href="/" onClick={chooseCity}>
+                  San Francisco
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   let form = (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="search"
-        className="form-control shadow-sm"
-        placeholder="Enter a city"
-        autoFocus="on"
-        autoComplete="off"
-        onChange={changeCity}
-      />
-      <input
-        type="submit"
-        className="btn btn-secondary shadow"
-        value="Search"
-      />
-      <i className="fas fa-map-marker-alt" onClick={showCurrentLocation}></i>
-    </form>
+    <div className="card">
+      <div className="card-body">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="search"
+            className="form-control shadow-sm"
+            placeholder="Enter a city"
+            autoFocus="on"
+            autoComplete="off"
+            onChange={changeCity}
+          />
+          <input
+            type="submit"
+            className="btn btn-secondary shadow"
+            value="Search"
+          />
+          <i
+            className="fas fa-map-marker-alt"
+            onClick={showCurrentLocation}
+          ></i>
+        </form>
+      </div>
+    </div>
   );
 
   if (weatherData.ready) {
     return (
       <div className="Search">
+        {cities}
         <div className="row">
           <div className="col">
-            <div className="card">
-              <div className="card-body">{form}</div>
-            </div>
+            {form}
             <Temperature details={weatherData} />
           </div>
         </div>
@@ -104,11 +158,10 @@ export default function Search(props) {
     searchByCity();
     return (
       <div className="Search">
+        {cities}
         <div className="row">
           <div className="col">
-            <div className="card">
-              <div className="card-body">{form}</div>
-            </div>
+            {form}
             Loading...
           </div>
         </div>

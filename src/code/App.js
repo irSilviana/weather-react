@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Cities from "./Cities";
+import Search from "./Search";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
 
@@ -17,8 +17,7 @@ export default function App() {
         <div className="weather-page">
           <div className="weather-app">
             {/* List of Cities */}
-            <Cities />
-            {/* Search Form inside Cities */}
+            <Search city="chicago" />
             {/* Main Body */}
             {/* <Temperature /> */}
             {/* Forecast */}

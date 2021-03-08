@@ -1,3 +1,20 @@
+.Search ul.cities {
+  color: #3858a8;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.Search ul.cities li {
+  color: #3858a8;
+  display: inline;
+  text-align: left;
+}
+
+.Search ul.cities li:hover {
+  color: #192c5c;
+  text-decoration: underline;
+}
+
 .Search .card {
   border: 0;
   background: transparent;
