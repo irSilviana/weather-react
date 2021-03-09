@@ -1,0 +1,7 @@
+.ForecastPreview .WeatherIcon canvas {
+  display: block;
+  height: 35px;
+  width: 35px;
+  margin: 0 auto;
+  float: none;
+}

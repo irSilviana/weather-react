@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Temperature from "./Temperature";
+import WeatherForecast from "./WeatherForecast";
 import "./Search.css";
 
 export default function Search(props) {
@@ -150,6 +151,7 @@ export default function Search(props) {
           <div className="col">
             {form}
             <Temperature details={weatherData} />
+            <WeatherForecast city={weatherData.city} />
           </div>
         </div>
       </div>
