@@ -2,6 +2,14 @@
   display: block;
   height: 35px;
   width: 35px;
-  margin: 0 auto;
+  margin: 5px auto;
   float: none;
+}
+
+.ForecastPreview {
+  font-size: 12px;
+}
+
+.ForecastPreview .hour {
+  font-size: 13px;
 }

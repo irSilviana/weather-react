@@ -16,12 +16,16 @@ export default function WeatherForecast(props) {
     return (
       <div className="WeatherForecast row">
         <div className="col">
-          3-hours Forecast <br />
           <div className="card">
             <div className="card-body">
               <div className="row">
+                <div className="col">
+                  <p>3-hours Forecast</p>
+                </div>
+              </div>
+              <div className="row">
                 {/* use this code */}
-                {forecast.list.slice(0, 5).map(function (forecastItem) {
+                {forecast.list.slice(0, 6).map(function (forecastItem) {
                   return <ForecastPreview data={forecastItem} />;
                 })}
 

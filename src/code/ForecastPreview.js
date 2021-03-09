@@ -6,18 +6,27 @@ export default function ForecastPreview(props) {
   function hours() {
     let date = new Date(props.data.dt * 1000);
     let hour = date.getHours();
-    return `${hour}:00`;
+    return <div className="hour">{hour}:00</div>;
   }
-  function temperature() {
-    let temperature = Math.round(props.data.main.temp);
-    return `${temperature} °C`;
+  function icon() {
+    return <WeatherIcon code={props.data.weather[0].icon} />;
+  }
+
+  function temperatureMax() {
+    let temperature = Math.round(props.data.main.temp_max);
+    return <strong>{temperature}°</strong>;
+  }
+
+  function temperatureMin() {
+    let temperature = Math.round(props.data.main.temp_min);
+    return `${temperature}°`;
   }
 
   return (
     <div className="ForecastPreview col" key={props.data.toString()}>
       {hours()}
-      <WeatherIcon code={props.data.weather[0].icon} />
-      {temperature()}
+      {icon()}
+      {temperatureMax()}/{temperatureMin()}
     </div>
   );
 }
