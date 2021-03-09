@@ -2,6 +2,7 @@
   text-align: center;
 }
 .WeatherForecast p {
+  color: #57595f;
   font-size: 14px;
   border-bottom: 1px solid #b4aaaa;
 }

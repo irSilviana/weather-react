@@ -4,10 +4,12 @@
   width: 35px;
   margin: 5px auto;
   float: none;
+  color: #57595f;
 }
 
 .ForecastPreview {
   font-size: 12px;
+  color: #57595f;
 }
 
 .ForecastPreview .hour {
