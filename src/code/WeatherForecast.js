@@ -25,7 +25,7 @@ export default function WeatherForecast(props) {
               </div>
               <div className="row">
                 {/* use this code */}
-                {forecast.list.slice(0, 6).map(function (forecastItem) {
+                {forecast.list.slice(0, 5).map(function (forecastItem) {
                   return <ForecastPreview data={forecastItem} />;
                 })}
 
