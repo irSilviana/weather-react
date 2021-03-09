@@ -12,6 +12,15 @@ export default function WeatherForecast(props) {
     setLoaded(true);
   }
 
+  function checkForecast() {
+    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+    let unit = "metric";
+    let link = "https://api.openweathermap.org/data/2.5/forecast?";
+    let apiUrl = `${link}q=${props.city}&appid=${apiKey}&units=${unit}`;
+
+    axios.get(apiUrl).then(showForecast);
+  }
+
   if (loaded && props.city === forecast.city.name) {
     return (
       <div className="WeatherForecast row">
@@ -20,7 +29,7 @@ export default function WeatherForecast(props) {
             <div className="card-body">
               <div className="row">
                 <div className="col">
-                  <p>3-hours Forecast</p>
+                  <p>3 Hour Forecast</p>
                 </div>
               </div>
               <div className="row">
@@ -43,12 +52,7 @@ export default function WeatherForecast(props) {
       </div>
     );
   } else {
-    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-    let unit = "metric";
-    let link = "https://api.openweathermap.org/data/2.5/forecast?";
-    let apiUrl = `${link}q=${props.city}&appid=${apiKey}&units=${unit}`;
-
-    axios.get(apiUrl).then(showForecast);
+    checkForecast();
     return null;
   }
 }
