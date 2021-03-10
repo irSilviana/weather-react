@@ -23,7 +23,7 @@ export default function ForecastPreview(props) {
   }
 
   return (
-    <div className="ForecastPreview col" key={props.data.toString()}>
+    <div className="ForecastPreview col">
       {hours()}
       {icon()}
       {temperatureMax()}/{temperatureMin()}

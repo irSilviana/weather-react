@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ForecastPreview from "./ForecastPreview";
+import DailyForecast from "./DailyForecast";
 import axios from "axios";
 import "./WeatherForecast.css";
 
@@ -45,6 +46,18 @@ export default function WeatherForecast(props) {
                 <ForecastPreview data={forecast.list[3]} />
                 <ForecastPreview data={forecast.list[4]} />
                 <ForecastPreview data={forecast.list[5]} /> */}
+              </div>
+            </div>
+            <div className="card-body">
+              <div className="row">
+                <div className="col">
+                  <p>Daily Forecast</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <DailyForecast data={forecast.list} />
+                </div>
               </div>
             </div>
           </div>
