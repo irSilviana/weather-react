@@ -30,7 +30,7 @@ export default function WeatherForecast(props) {
             <div className="card-body">
               <div className="row">
                 <div className="col">
-                  <p>3 Hour Forecast</p>
+                  <p>3-hour Forecast</p>
                 </div>
               </div>
               <div className="row">
@@ -51,7 +51,7 @@ export default function WeatherForecast(props) {
             <div className="card-body">
               <div className="row">
                 <div className="col">
-                  <p>5 Day Forecast</p>
+                  <p>5-day Forecast</p>
                 </div>
               </div>
               <div className="row">
