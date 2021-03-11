@@ -60,7 +60,9 @@ export default function CityTime(props) {
       <div className="col">
         <div className="card ">
           <div className="card-body ">
-            <h2>{props.city}</h2>
+            <h2>
+              {props.city}, {props.country}
+            </h2>
             <ul className="datetime">
               <li id="last-update">Last updated:</li>
               <li id="day">{day}</li>

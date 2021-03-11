@@ -11,7 +11,11 @@ export default function Temperature(props) {
         <div className="row">
           {/* Left Side */}
           <div className="col">
-            <CityTime city={props.details.city} date={props.details.date} />
+            <CityTime
+              city={props.details.city}
+              date={props.details.date}
+              country={props.details.country}
+            />
           </div>
           {/* Right Side */}
           <div className="col">
