@@ -5,9 +5,9 @@
 .WeatherTemperature span.Temperature {
   color: #333f6e;
   float: left;
-  font-size: 36px;
+  font-size: 45px;
   font-weight: 400;
-  margin: 0;
+  margin: 0 0 10px 0;
   line-height: 1;
 }
 

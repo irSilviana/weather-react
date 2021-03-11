@@ -102,6 +102,12 @@ export default function Search(props) {
               </li>
               &nbsp;|&nbsp;
               <li>
+                <a href="#Moscow" onClick={chooseCity}>
+                  Moscow
+                </a>
+              </li>
+              &nbsp;|&nbsp;
+              <li>
                 <a href="#New York" onClick={chooseCity}>
                   New York
                 </a>
