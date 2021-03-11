@@ -112,12 +112,6 @@ export default function Search(props) {
                   New York
                 </a>
               </li>
-              &nbsp;|&nbsp;
-              <li>
-                <a href="/" onClick={chooseCity}>
-                  San Francisco
-                </a>
-              </li>
             </ul>
           </div>
         </div>
