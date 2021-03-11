@@ -25,7 +25,7 @@ export default function Footer() {
           </a>
           &nbsp;from&nbsp;
           <a
-            href="https://www.shecodes.io/students/273-irsilviana-irsilviana"
+            href="https://www.shecodes.io/students/282-irsilviana-irsilviana"
             target="_blank"
             rel="noreferrer"
           >
