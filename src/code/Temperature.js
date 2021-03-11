@@ -62,7 +62,7 @@ export default function Temperature(props) {
                       </li>
                       <li>
                         Wind: <span>{Math.round(props.details.wind)}</span>
-                        km/h
+                        m/s
                       </li>
                     </ul>
                   </div>
