@@ -67,7 +67,7 @@ export default function DailyForecast(props) {
     icon5days.push(frequent(iconEvery3hour));
     iconEvery3hour = iconsPerDay[i];
   }
-  console.log(icon5days);
+  //console.log(icon5days);
 
   //Maximum Temperature within 5-days
   let tempMax5days = [];

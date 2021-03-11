@@ -51,7 +51,7 @@ export default function WeatherForecast(props) {
             <div className="card-body">
               <div className="row">
                 <div className="col">
-                  <p>Daily Forecast</p>
+                  <p>5 Day Forecast</p>
                 </div>
               </div>
               <div className="row">

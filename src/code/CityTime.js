@@ -58,9 +58,9 @@ export default function CityTime(props) {
   return (
     <div className="CityTime">
       <div className="col">
-        <div className="card">
-          <div className="card-body">
-            <h1>{props.city}</h1>
+        <div className="card ">
+          <div className="card-body ">
+            <h2>{props.city}</h2>
             <ul className="datetime">
               <li id="last-update">Last updated:</li>
               <li id="day">{day}</li>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Temperature from "./Temperature";
 import WeatherForecast from "./WeatherForecast";
+import Loading from "./Loading";
 import "./Search.css";
 
 export default function Search(props) {
@@ -164,7 +165,7 @@ export default function Search(props) {
         <div className="row">
           <div className="col">
             {form}
-            Loading...
+            <Loading />
           </div>
         </div>
       </div>

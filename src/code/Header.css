@@ -1,0 +1,17 @@
+.Header {
+  text-align: center;
+}
+.Header img {
+  width: 50px;
+  position: relative;
+  top: -5px;
+}
+
+.Header h1 {
+  color: #333f6e;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+  margin: 5px;
+  text-align: center;
+}

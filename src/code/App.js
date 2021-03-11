@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
+import Header from "./Header";
 import Search from "./Search";
-
 import Footer from "./Footer";
 
 // let background = {
@@ -16,6 +16,7 @@ export default function App() {
       <div className="container">
         <div className="weather-page">
           <div className="weather-app">
+            <Header />
             {/* <Cities/> */}
             <Search city="chicago" />
             {/* Main Body */}
