@@ -3,11 +3,21 @@ import CityTime from "./CityTime";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
 import "./Temperature.css";
+//import background from "./images/background/01d@2x.png";
 
 export default function Temperature(props) {
+  // let imageUrl = `${background}/${props.details.icon}@2x.png`;
+
   if (props.details) {
     return (
-      <div className="Temperature">
+      <div
+        className="Temperature"
+        // style={{
+        //   backgroundImage: `url(${imageUrl})`,
+        //   backgroundPosition: "center",
+        //   backgroundRepeat: "no-repeat",
+        // }}
+      >
         <div className="row">
           {/* Left Side */}
           <div className="col">
@@ -32,6 +42,7 @@ export default function Temperature(props) {
                     </div>
                   </div>
                 </div>
+
                 {/* lower part */}
                 <div className="row">
                   <div className="col">
