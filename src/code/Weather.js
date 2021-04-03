@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Cities from "./Cities";
 import Temperature from "./Temperature";
 import WeatherForecast from "./WeatherForecast";
 import Loading from "./Loading";
-import "./Search.css";
+import "./Weather.css";
 
-export default function Search(props) {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   let [city, setCity] = useState(props.city);
 
@@ -29,7 +30,7 @@ export default function Search(props) {
     setCity(event.target.value.trim());
   }
 
-  function searchByCity() {
+  function searchByCity(city) {
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
     let unit = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
@@ -50,7 +51,7 @@ export default function Search(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if (city !== "") {
-      searchByCity();
+      searchByCity(city);
     } else {
       alert("Please enter a city!");
     }
@@ -70,60 +71,6 @@ export default function Search(props) {
   function showCurrentLocation() {
     navigator.geolocation.getCurrentPosition(currentPosition);
   }
-
-  function chooseCity(event) {
-    event.preventDefault();
-    city = event.target.innerHTML;
-    searchByCity();
-  }
-
-  let cities = (
-    <div className="row">
-      <div className="col">
-        <div className="card">
-          <div className="card-body">
-            <ul className="cities">
-              <li>
-                <a href="#Jakarta" onClick={chooseCity}>
-                  Jakarta
-                </a>
-              </li>
-              &nbsp;|&nbsp;
-              <li>
-                <a href="#London" onClick={chooseCity}>
-                  London
-                </a>
-              </li>
-              &nbsp;|&nbsp;
-              <li>
-                <a href="#Paris" onClick={chooseCity}>
-                  Paris
-                </a>
-              </li>
-              &nbsp;|&nbsp;
-              <li>
-                <a href="#Moscow" onClick={chooseCity}>
-                  Moscow
-                </a>
-              </li>
-              &nbsp;|&nbsp;
-              <li>
-                <a href="#New York" onClick={chooseCity}>
-                  New York
-                </a>
-              </li>
-              &nbsp;|&nbsp;
-              <li>
-                <a href="#Krakow" onClick={chooseCity}>
-                  Krakow
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 
   let form = (
     <div className="card">
@@ -153,8 +100,8 @@ export default function Search(props) {
 
   if (weatherData.ready) {
     return (
-      <div className="Search">
-        {cities}
+      <div className="Weather">
+        <Cities searchByCity={searchByCity} />
         <div className="row">
           <div className="col">
             {form}
@@ -165,10 +112,10 @@ export default function Search(props) {
       </div>
     );
   } else {
-    searchByCity();
+    searchByCity(city);
     return (
-      <div className="Search">
-        {cities}
+      <div className="Weather">
+        <Cities searchByCity={searchByCity} />
         <div className="row">
           <div className="col">
             {form}

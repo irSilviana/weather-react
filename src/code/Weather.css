@@ -1,32 +1,32 @@
-.Search ul.cities {
+.Weather ul.cities {
   color: #3858a8;
   cursor: pointer;
   font-size: 13px;
 }
 
-.Search ul.cities li {
+.Weather ul.cities li {
   color: #3858a8;
   display: inline;
   text-align: left;
 }
 
-.Search ul.cities li:hover {
+.Weather ul.cities li:hover {
   color: #192c5c;
   text-decoration: underline;
 }
 
-.Search .card {
+.Weather .card {
   border: 0;
   background: transparent;
 }
-.Search .form-control {
+.Weather .form-control {
   display: inline;
   margin-bottom: 5px;
   margin-right: 5px;
   width: 150px;
 }
 
-.Search .fa-map-marker-alt {
+.Weather .fa-map-marker-alt {
   color: #1476a5;
   cursor: pointer;
   font-size: 1.9rem;
@@ -35,7 +35,7 @@
   top: 3px;
 }
 
-.Search .btn-secondary {
+.Weather .btn-secondary {
   margin-top: -3px;
   padding: 5px 10px;
 }
