@@ -7,6 +7,7 @@ import "./WeatherForecast.css";
 export default function WeatherForecast(props) {
   const [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
+  let unit = props.unit;
 
   function showForecast(response) {
     setForecast(response.data);
@@ -15,7 +16,6 @@ export default function WeatherForecast(props) {
 
   function checkForecast() {
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-    let unit = "metric";
     let link = "https://api.openweathermap.org/data/2.5/forecast?";
     let apiUrl = `${link}q=${props.city}&appid=${apiKey}&units=${unit}`;
 
@@ -35,8 +35,8 @@ export default function WeatherForecast(props) {
               </div>
               <div className="row">
                 {/* use this code */}
-                {forecast.list.slice(0, 5).map(function (forecastItem) {
-                  return <ForecastPreview data={forecastItem} />;
+                {forecast.list.slice(0, 5).map(function (forecastItem, index) {
+                  return <ForecastPreview data={forecastItem} key={index} />;
                 })}
 
                 {/* instead of these codes
