@@ -45,17 +45,6 @@ export default function Weather(props) {
       });
   }
 
-  function currentPosition(position) {
-    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
-    let url = "https://api.openweathermap.org/data/2.5/weather?";
-
-    let apiUrl = `${url}lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}`;
-
-    axios.get(apiUrl).then(showTemperature);
-  }
-
   if (weatherData.ready) {
     return (
       <div className="Weather">
@@ -63,8 +52,9 @@ export default function Weather(props) {
         <div className="row">
           <div className="col">
             <SearchForm
-              currentPosition={currentPosition}
+              showTemperature={showTemperature}
               searchByCity={searchByCity}
+              unit={unit}
             />
             <Temperature details={weatherData} unit={unit} />
             <WeatherForecast city={weatherData.city} unit={unit} />
@@ -80,8 +70,9 @@ export default function Weather(props) {
         <div className="row">
           <div className="col">
             <SearchForm
-              currentPosition={currentPosition}
+              showTemperature={showTemperature}
               searchByCity={searchByCity}
+              unit={unit}
             />
             <Loading />
           </div>
