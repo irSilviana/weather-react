@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Cities from "./Cities";
+import SearchForm from "./SearchForm";
 import Temperature from "./Temperature";
 import WeatherForecast from "./WeatherForecast";
 import Loading from "./Loading";
@@ -8,7 +9,8 @@ import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  let [city, setCity] = useState(props.city);
+  let unit = "metric";
+  let city = props.city;
 
   function showTemperature(response) {
     setWeatherData({
@@ -26,17 +28,12 @@ export default function Weather(props) {
     });
   }
 
-  function changeCity(event) {
-    setCity(event.target.value.trim());
-  }
-
   function searchByCity(city) {
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-    let unit = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    let url = "https://api.openweathermap.org/data/2.5/weather?";
+    let apiUrl = `${url}q=${city}&appid=${apiKey}&units=${unit}`;
 
     // axios.get(apiUrl).then(showTemperature).catch(console.clear);
-
     axios
       .get(apiUrl)
       .then(showTemperature)
@@ -48,55 +45,16 @@ export default function Weather(props) {
       });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (city !== "") {
-      searchByCity(city);
-    } else {
-      alert("Please enter a city!");
-    }
-  }
-
   function currentPosition(position) {
+    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
-    let unit = "metric";
-    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+    let url = "https://api.openweathermap.org/data/2.5/weather?";
 
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}`;
+    let apiUrl = `${url}lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}`;
 
     axios.get(apiUrl).then(showTemperature);
   }
-
-  function showCurrentLocation() {
-    navigator.geolocation.getCurrentPosition(currentPosition);
-  }
-
-  let form = (
-    <div className="card">
-      <div className="card-body">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            className="form-control shadow-sm"
-            placeholder="Enter a city"
-            autoFocus="on"
-            autoComplete="off"
-            onChange={changeCity}
-          />
-          <input
-            type="submit"
-            className="btn btn-secondary shadow"
-            value="Search"
-          />
-          <i
-            className="fas fa-map-marker-alt"
-            onClick={showCurrentLocation}
-          ></i>
-        </form>
-      </div>
-    </div>
-  );
 
   if (weatherData.ready) {
     return (
@@ -104,9 +62,12 @@ export default function Weather(props) {
         <Cities searchByCity={searchByCity} />
         <div className="row">
           <div className="col">
-            {form}
-            <Temperature details={weatherData} />
-            <WeatherForecast city={weatherData.city} />
+            <SearchForm
+              currentPosition={currentPosition}
+              searchByCity={searchByCity}
+            />
+            <Temperature details={weatherData} unit={unit} />
+            <WeatherForecast city={weatherData.city} unit={unit} />
           </div>
         </div>
       </div>
@@ -118,7 +79,10 @@ export default function Weather(props) {
         <Cities searchByCity={searchByCity} />
         <div className="row">
           <div className="col">
-            {form}
+            <SearchForm
+              currentPosition={currentPosition}
+              searchByCity={searchByCity}
+            />
             <Loading />
           </div>
         </div>
