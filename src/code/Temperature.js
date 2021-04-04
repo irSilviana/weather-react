@@ -38,7 +38,10 @@ export default function Temperature(props) {
                       <div className="float-left">
                         <WeatherIcon code={props.details.icon} />
                       </div>
-                      <WeatherTemperature celcius={props.details.temperature} />
+                      <WeatherTemperature
+                        temperature={props.details.temperature}
+                        unit={props.unit}
+                      />
                     </div>
                   </div>
                 </div>
