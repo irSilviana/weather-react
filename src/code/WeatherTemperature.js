@@ -61,5 +61,6 @@ export default function WeatherTemperature(props) {
     );
   } else {
     setLoaded(true);
+    return null;
   }
 }
