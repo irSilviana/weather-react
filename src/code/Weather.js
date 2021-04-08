@@ -3,7 +3,8 @@ import axios from "axios";
 import Cities from "./Cities";
 import SearchForm from "./SearchForm";
 import Temperature from "./Temperature";
-import WeatherForecast from "./WeatherForecast";
+// import WeatherForecast from "./WeatherForecast";
+import WeatherForecast2 from "./WeatherForecast2";
 import Loading from "./Loading";
 import "./Weather.css";
 
@@ -15,6 +16,7 @@ export default function Weather(props) {
   function showTemperature(response) {
     setWeatherData({
       ready: true,
+      coord: response.data.coord,
       city: response.data.name,
       country: response.data.sys.country,
       date: new Date(response.data.dt * 1000),
@@ -57,7 +59,8 @@ export default function Weather(props) {
               unit={unit}
             />
             <Temperature details={weatherData} unit={unit} />
-            <WeatherForecast city={weatherData.city} unit={unit} />
+            {/* <WeatherForecast city={weatherData.city} unit={unit} /> */}
+            <WeatherForecast2 coord={weatherData.coord} unit={unit} />
           </div>
         </div>
       </div>
