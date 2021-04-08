@@ -1,72 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./WeatherTemperature.css";
 
 export default function WeatherTemperature(props) {
   let [unit, setUnit] = useState(props.unit);
-  const weather = [{ unit: props.unit, temp: props.temperature }];
-  let temperature = null;
+  let [temperature, setTemperature] = useState(props.temperature);
+  let [loaded, setLoaded] = useState(false);
+  let setCelsius = props.setCelsius;
+  let setFahrenheit = props.setFahrenheit;
 
-  function updateWeather() {
-    if (props.unit === "metric") {
-      temperature = (props.temperature * 9) / 5 + 32;
-      weather.push({ unit: "imperial", temp: temperature });
-    } else if (props.unit === "imperial") {
-      temperature = ((props.temperature - 32) * 5) / 9;
-      weather.push({ unit: "metric", temp: temperature });
-    }
-  }
-  updateWeather();
+  useEffect(() => {
+    setLoaded(false);
+    setTemperature(props.temperature);
+  }, [props.temperature]);
 
-  function result() {
-    let result = [];
-    if (unit === "imperial") {
-      for (let i = 0; i < weather.length; i++) {
-        if (weather[i].unit === "imperial") {
-          result.push(weather[i].temp);
-        }
-      }
-      return result;
-    } else if (unit === "metric") {
-      for (let i = 0; i < weather.length; i++) {
-        if (weather[i].unit === "metric") {
-          result.push(weather[i].temp);
-        }
-      }
-      return result;
-    }
-  }
-
-  function setFahrenheit(event) {
+  function getFahrenheit(event) {
     event.preventDefault();
+    temperature = (temperature * 9) / 5 + 32;
+    setTemperature(temperature);
     setUnit("imperial");
+    setFahrenheit(event);
   }
 
-  function setCelsius(event) {
+  function getCelsius(event) {
     event.preventDefault();
+    temperature = ((temperature - 32) * 5) / 9;
+    setTemperature(temperature);
     setUnit("metric");
+    setCelsius(event);
   }
 
-  if (unit === "metric") {
+  if (unit === "metric" && loaded) {
     return (
       <div className="WeatherTemperature">
-        <span className="Temperature">{Math.round(result())}</span>
+        <span className="Temperature">{Math.round(temperature)}</span>
         <span className="units">
           <button href="#" className="active">
             °C
           </button>
           |
-          <button href="#" onClick={setFahrenheit}>
+          <button href="#" onClick={getFahrenheit}>
             °F
           </button>
         </span>
       </div>
     );
-  } else if (unit === "imperial") {
+  } else if (unit === "imperial" && loaded) {
     return (
       <div className="WeatherTemperature">
-        <span className="Temperature">{Math.round(result())}</span>
+        <span className="Temperature">{Math.round(temperature)}</span>
         <span className="units">
-          <button href="#" onClick={setCelsius}>
+          <button href="#" onClick={getCelsius}>
             °C
           </button>{" "}
           |
@@ -76,5 +59,7 @@ export default function WeatherTemperature(props) {
         </span>
       </div>
     );
+  } else {
+    setLoaded(true);
   }
 }
