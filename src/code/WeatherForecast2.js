@@ -13,7 +13,7 @@ function WeatherForecast2(props) {
 
   useEffect(() => {
     setLoaded(false);
-  }, [props.coord]);
+  }, [props.coord, props.unit]);
 
   function showForecast(response) {
     setForecast(response.data);
