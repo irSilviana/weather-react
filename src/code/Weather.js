@@ -3,15 +3,26 @@ import axios from "axios";
 import Cities from "./Cities";
 import SearchForm from "./SearchForm";
 import Temperature from "./Temperature";
-// import WeatherForecast from "./WeatherForecast";
+import WeatherForecast from "./WeatherForecast";
 import WeatherForecast2 from "./WeatherForecast2";
 import Loading from "./Loading";
 import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  let unit = "metric";
+  let [unit, setUnit] = useState("metric");
+  // let unit = "metric";
   let city = props.city;
+
+  function setFahrenheit(event) {
+    event.preventDefault();
+    setUnit("imperial");
+  }
+
+  function setCelsius(event) {
+    event.preventDefault();
+    setUnit("metric");
+  }
 
   function showTemperature(response) {
     setWeatherData({
@@ -58,8 +69,13 @@ export default function Weather(props) {
               searchByCity={searchByCity}
               unit={unit}
             />
-            <Temperature details={weatherData} unit={unit} />
-            {/* <WeatherForecast city={weatherData.city} unit={unit} /> */}
+            <Temperature
+              details={weatherData}
+              unit={unit}
+              setCelsius={setCelsius}
+              setFahrenheit={setFahrenheit}
+            />
+            <WeatherForecast city={weatherData.city} unit={unit} />
             <WeatherForecast2 coord={weatherData.coord} unit={unit} />
           </div>
         </div>
