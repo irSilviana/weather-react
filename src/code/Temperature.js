@@ -41,6 +41,8 @@ export default function Temperature(props) {
                       <WeatherTemperature
                         temperature={props.details.temperature}
                         unit={props.unit}
+                        setCelsius={props.setCelsius}
+                        setFahrenheit={props.setFahrenheit}
                       />
                     </div>
                   </div>
