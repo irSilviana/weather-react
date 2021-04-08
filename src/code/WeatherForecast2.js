@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HourlyForecast2 from "./HourlyForecast2";
 import ForecastPreview2 from "./ForecastPreview2";
 import axios from "axios";
@@ -10,6 +10,10 @@ function WeatherForecast2(props) {
   let lon = props.coord.lon;
   let lat = props.coord.lat;
   let unit = props.unit;
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coord]);
 
   function showForecast(response) {
     setForecast(response.data);
@@ -24,7 +28,7 @@ function WeatherForecast2(props) {
     axios.get(apiUrl).then(showForecast);
   }
 
-  if (loaded && lat === forecast.lat && lon === forecast.lon)
+  if (loaded)
     return (
       <div className="WeatherForecast2 row">
         <div className="col">
@@ -36,11 +40,11 @@ function WeatherForecast2(props) {
                 </div>
               </div>
               <div className="row">
-                {forecast.hourly
-                  .slice(0, 5)
-                  .map(function (forecastItem, index) {
+                {forecast.hourly.map(function (forecastItem, index) {
+                  if (index < 5) {
                     return <HourlyForecast2 data={forecastItem} key={index} />;
-                  })}
+                  } else return null;
+                })}
 
                 {/* <HourlyForecast2 data={forecast.hourly[0]} />
                 <HourlyForecast2 data={forecast.hourly[1]} />
