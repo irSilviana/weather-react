@@ -4,12 +4,10 @@ import "./WeatherTemperature.css";
 export default function WeatherTemperature(props) {
   let [unit, setUnit] = useState(props.unit);
   let [temperature, setTemperature] = useState(props.temperature);
-  let [loaded, setLoaded] = useState(false);
   let setCelsius = props.setCelsius;
   let setFahrenheit = props.setFahrenheit;
 
   useEffect(() => {
-    setLoaded(false);
     setTemperature(props.temperature);
   }, [props.temperature]);
 
@@ -29,7 +27,7 @@ export default function WeatherTemperature(props) {
     setCelsius(event);
   }
 
-  if (unit === "metric" && loaded) {
+  if (unit === "metric") {
     return (
       <div className="WeatherTemperature">
         <span className="Temperature">{Math.round(temperature)}</span>
@@ -44,7 +42,7 @@ export default function WeatherTemperature(props) {
         </span>
       </div>
     );
-  } else if (unit === "imperial" && loaded) {
+  } else if (unit === "imperial") {
     return (
       <div className="WeatherTemperature">
         <span className="Temperature">{Math.round(temperature)}</span>
@@ -59,8 +57,5 @@ export default function WeatherTemperature(props) {
         </span>
       </div>
     );
-  } else {
-    setLoaded(true);
-    return null;
   }
 }
